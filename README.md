@@ -1,2 +1,3 @@
 # Online-Store
-Created at IAI Webcamp #6
+Online Store created during IAI Webcamp #6 in Szczecin.
+

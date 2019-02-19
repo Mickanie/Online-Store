@@ -1,0 +1,65 @@
+.slider button { 
+  
+
+  visibility: hidden;
+  position: relative;
+
+ }
+
+ .slider button:after {
+  visibility: visible;
+
+  color: black;
+  font-family:'Font Awesome 5 Free';
+  font-weight: 900;
+ 
+
+
+ }
+
+.slick-prev:after {
+    content: "\f104";
+     position: absolute;
+     left: 75px;
+     top: 0;
+}
+
+.slick-next:after {
+  content: "\f105";
+  position: absolute;
+  right: 160px;
+  top: 0;
+}
+
+
+ .slider {
+  width: 90vw;
+  margin-left: 8vw;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+
+
+ }
+
+ @media only screen and (max-width: 757px) {
+
+  .slider {
+    margin-left: -10vw;
+   
+
+  }
+
+  .slider img {
+    max-width: 100%
+  }
+ 
+
+
+
+
+  }
+
+
+
+
