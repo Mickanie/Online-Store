@@ -8,6 +8,9 @@
 
 body {
   font-family: 'Roboto Slab', serif;
+  margin: 0;
+  padding: 0;
+
 
 }
 
@@ -119,7 +122,7 @@ a:hover {
 
 }
 
-input::placeholder {
+.search-bar input::placeholder {
   color: white;
   font-size: 0.8rem;
 
@@ -283,7 +286,7 @@ button i {
 h2 {
   margin: 30px;
   margin-top: 50px;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.2em;
   text-align: center;
 }
 
@@ -297,30 +300,136 @@ h3 {
   color: red;
 }
 
-/******FOOTER***************/
+/******LOGOS***************/
 
-footer p {
+.logos-info p {
   color: grey;
   font-style: italic;
   text-align: center;
   font-size: 0.9em;
 }
+/********FOOTER****************/
+
+footer {
+  margin-top: 50px;
+
+  width: 100vw;
+}
+
+.newsletter-background {
+    background-color: #3E84C0;
+    width: 100%;
 
 
+}
+
+.newsletter {
+  margin: auto;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-between;
+  padding: 30px 0 30px 0;
+}
+
+
+.newsletter h2 {
+  margin: 30px 0px 30px 0px;
+  flex: 1;
+  padding-left: 0;
+}
+
+
+form {
+
+  flex: 3;
+}
+
+form input {
+  margin-right: 20px;
+  padding: 8px;
+  width: 30%;
+  border: 0;
+  border-radius: 3px;
+
+}
+
+form button {
+  margin-left: 2px;
+  padding: 10px 50px 10px 50px;
+  width: 30%;
+  border-radius: 5px;
+}
+
+.bottom-background {
+    background-color: #4D4D4D;
+    width: 100%;
+}
+.bottom-info {
+  margin: auto;
+  width: 75vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0 15px 0;
+  color: white;
+
+}
+
+.bottom-info div {
+  flex: 1;
+}
+
+.bottom-info h4 {
+  margin-bottom: 10px;
+
+}
+
+.bottom-info ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.bottom-info ul li {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.bottom-info p {
+  font-size: 14px;
+}
+
+.payment {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 75vw;
+  margin: auto;
+
+}
+
+  .mobile-dropdown {
+    display: flex;
+
+  }
+
+  .bottom-info a {
+    color: white;
+  }
 
 
 @media only screen and (max-width: 1200px) and (min-width: 980px) {
-  .container {
-   max-width: 1170px;
+    .container {
+     max-width: 1170px;
 
- }
- .search-bar {
-  margin-left: 10px;
-  flex-basis: 300px;
-}
-.cart a {
-  margin-left: 20px;
-}
+   }
+   .search-bar {
+    margin-left: 10px;
+    flex-basis: 300px;
+  }
+  .cart a {
+    margin-left: 20px;
+  }
 
 }
 
@@ -388,8 +497,7 @@ footer p {
 
   height: 420px;
   position: relative;
-/*  display: flex;
-  flex-direction: column;*/
+
 
 
 }
@@ -415,6 +523,10 @@ footer p {
 
 
 @media only screen and (max-width: 757px) {
+  .page-width {
+    width: 85vw;
+  }
+
   .container {
     max-width: 749px;
     flex-wrap: nowrap;
@@ -481,6 +593,8 @@ footer p {
 
   .dropdown-menu  { 
     display: block;
+    width:100vw;
+    margin-left: -9%;
 
   }
 
@@ -490,8 +604,14 @@ footer p {
 
   a { 
     display: block; 
-    padding: 0;
+    padding: 15px;
 
+
+
+  }
+
+  div + ul li a {
+    border-radius: 0;
   }
 
   .dropdown-menu > li > a > i {
@@ -501,24 +621,44 @@ footer p {
   li {
 
     width: 100%;
+
+  }
+
+  .dropdown-menu > li  {
+    border-bottom: 1px solid grey;
+
+  }
+  .dropdown-menu > li> a {
+    margin-left: 2%;
+
+  }
+
+  .dropdown-menu > li> a:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f107";
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+
   }
 
   .dropdown-menu > li > a:hover + ul {
 
-    position: absolute;
-    left: 160px;
-    top: 0;
+    position: static;
     margin: 0;
-    width: 50vw;
+    width: 100vw;
+    box-shadow: none;
+   
 
   }
 
 
+
   .dropdown-menu > li > a + ul:hover {
     display: flex;
-    position: absolute;
-    left: 160px;
-    top: 0;
+    position: static;
+    box-shadow: none;
+
 
   }
 
@@ -552,5 +692,101 @@ footer p {
 
   }
 
+  /**********NEWS****************/
+
+  .info2, .info3 {
+    display: none;
+  }
+
+  /******FOOTER*************/
+
+  .newsletter{
+    flex-direction: column;
+    width: 85vw;
+  }
+
+  .newsletter h2 {
+      margin-top: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+
+  form input {
+
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 20px;
+  }
+  form button {
+    width: 100%;
+    padding: 20px;
+
+  }
+
+  .bottom-info {
+    flex-direction: column;
+    width: 85vw;
+  }
+
+  .mobile-dropdown {
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-top: 0;
+    margin-left: 9%;
+    position: relative;
+    
+
+  }
+
+  .contact a {
+    padding-left: 0;
+  }
+
+  .mobile-dropdown:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f107";
+    font-weight: 900;
+    position: absolute;
+    right: 30px;
+
+  }
+
+  .dotpay {
+    display: none;
+  }
+
+  .mobile-dropdown-menu {
+    width: 100vw;
+    border-bottom: 1px solid grey;
+    margin-left: -9%;
+  }
+
+  .mobile-dropdown + ul {
+
+    display: none;
+    margin-left: 9%;
+  }
+
+  .mobile-dropdown + ul.active {
+    display: block;
+  }
+
+  .mobile-dropdown.active:after {
+    content: "\f106";
+  }
+
+  .telephone {
+    font-size: 25px !important;
+
+  }
+
+  .payment {
+    justify-content: center;
+  }
 }
 

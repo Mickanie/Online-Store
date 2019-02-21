@@ -9,7 +9,14 @@ $(document).ready(function(){
 		slidesToShow: 5,
 		slidesToScroll:1,
 		autoplay: true,
-		arrows: false
+		autoplaySpeed: 1000,
+		arrows: false,
+		responsive: [{
+			breakpoint: 757,
+			settings: {
+				slidesToShow: 2
+				}
+		}]
 	});
 });
 
@@ -41,6 +48,9 @@ $(document).ready(function(){
 const nav = document.querySelector('.nav');
 const ul = document.querySelector('div + ul');
 let allText;
+const expand = document.querySelectorAll('.mobile-dropdown');
+const mobileDropdowns = document.querySelectorAll('.mobile-dropdown + ul');
+const form = document.querySelector('form');
 
 nav.addEventListener('click', () => {
 	ul.classList.toggle('off');
@@ -51,54 +61,33 @@ const moreButton = document.querySelectorAll('.read-more');
 const result = document.querySelector('.result');
 const topLayer = document.querySelector('.top-layer');
 
-const showInfo = (allText) => {
-	let oneText = allText.split('</div>');
+
+const showInfo = (text) => {
+	let oneText = text.split('</div>');
 	result.innerHTML = `<button onClick="exitDiv()"><i class="fas fa-times"></i></button>`;
 	result.innerHTML += `${oneText[0]}</div>`;
 	topLayer.style.display = "flex";
 }
 
-const getInfo = (event) => {
+function getInfo (event) {
 
 	url = event.target.dataset.url;
 	
 	
 	const file = `http://127.0.0.1:8080/${url}.html`;
+	fetch(file)
 
+	if (localStorage.getItem(`${url}`) === null) {
 
-	if (localStorage.getItem(`${url}`) != null) {
-
-		allText = localStorage.getItem(`${url}`);
-		showInfo(allText);
-
+		fetch(file)
+		.then(resp=>{ return resp.text() })
+		.then(text=>{ localStorage.setItem(`${url}`, text); showInfo(text)})
 
 	} else {
 	
-		let xhttp = new XMLHttpRequest();
-		xhttp.open("GET", file, false);
-
-		xhttp.onreadystatechange = function ()	{
-
-			if (xhttp.readyState === 4) {
-
-		
-				if (xhttp.status === 200 || xhttp.status == 0) {
-
-					allText = xhttp.responseText;
-					localStorage.setItem(`${url}`, allText);
-					showInfo(allText);
-
-
-				}
-
-			}
-			xhttp.send(null);
-
-		}
-
-
+		allText = localStorage.getItem(`${url}`);
+		showInfo(allText);
 	}
-
 
 
 }
@@ -111,5 +100,28 @@ function exitDiv() {
 }
 
 
+const expandList = (event) => {
+	const ul = event.target.nextElementSibling;
+	let active = false;
+	if (event.target.classList.contains('active')) {
+			active = true;
+	} else {
+		active = false;
+	}
+
+	mobileDropdowns.forEach(mobileDropdown => {
+		mobileDropdown.classList.remove('active');
+		mobileDropdown.previousElementSibling.classList.remove('active');
+	});
+	if(!active) {
+		ul.classList.toggle("active");
+	
+	event.target.classList.toggle("active");
+	}
+	
+
+}
+
 
 moreButton.forEach(button => button.addEventListener('click', getInfo));
+expand.forEach(exp => exp.addEventListener('click', expandList));
