@@ -74,7 +74,7 @@ function getInfo (event) {
 	url = event.target.dataset.url;
 	
 	
-	const file = `http://127.0.0.1:8080/${url}.html`;
+	const file = `./${url}.html`;
 	fetch(file)
 
 	if (localStorage.getItem(`${url}`) === null) {
